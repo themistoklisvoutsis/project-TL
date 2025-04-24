@@ -39,6 +39,9 @@ public class WeightTrackingTerminal {
             bmi = weight / (height * height);
             System.out.println("BMI is " + bmi);
 
+            // Αποθήκευση στη βάση δεδομένων
+            saveToDatabase(height, weight, bmi);
+
         } else if(choice==2){
             printHistory();
         }
@@ -47,13 +50,13 @@ public class WeightTrackingTerminal {
     // Μέθοδος για αποθήκευση δεδομένων στη βάση
     public static void saveToDatabase(double height, double weight, double bmi) {
         // Σύνδεση στη βάση δεδομένων
-        String url = "jdbc:mysql://localhost:3306/your_database_name";
+        String url = "jdbc:mysql://localhost:3306/WeightTRacking";
         String username = "root";
-        String password = "your_password";
+        String password = "1234ceid";
 
         try (Connection conn = DriverManager.getConnection(url, username, password)) {
             // Δημιουργία SQL query για εισαγωγή
-            String query = "INSERT INTO weight_history (height, weight, bmi, date) VALUES (" +
+            String query = "INSERT INTO gymclient (client_height, client_weight, bmi, bmi_date) VALUES (" +
                     height + ", " + weight + ", " + bmi + ", CURDATE())";
 
             // Εκτέλεση του query
@@ -97,4 +100,10 @@ public class WeightTrackingTerminal {
             System.out.println("Σφάλμα κατά την ανάκτηση των δεδομένων: " + e.getMessage());
         }
     }
+
+
+
+
+
+
 }
