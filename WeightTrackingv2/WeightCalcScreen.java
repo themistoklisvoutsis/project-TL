@@ -16,7 +16,7 @@ public class WeightCalcScreen {
         if (checkBodyData(weight, height)) {
             return new double[]{weight, height};
         } else {
-            System.out.println("Μη έγκυρα στοιχεία! Παρακαλώ ελέγξτε τις τιμές.");
+            NotValidData.displayError();
             return null;
         }
     }

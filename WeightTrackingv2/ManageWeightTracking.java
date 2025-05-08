@@ -2,6 +2,7 @@ public class ManageWeightTracking {
     private static final int userId = 1; // Προσωρινή σταθερή τιμή για τον χρήστη.
     
     public static void main(String[] args) {
+
         // Επιλογή Υπολογισμού Δείκτη Μάζας Σώματος.
         WeightTrackingScreen.showWeightTrackingScreen();
         int choice = WeightTrackingScreen.categorySelection();
@@ -21,7 +22,8 @@ public class ManageWeightTracking {
                 }
             }
         } else if (choice == 2) { // Προβολή Ιστορικού.
-            System.out.println("Oxi");
+            WeightHistoryScreen.display(); // Προβολή οθόνης Ιστορικού.
+            DBManager.bodyMassHistorySearch(); // Εμφάνιση μετρήσεων bmi.
         }
     }
 }
