@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 public class DBManager {
     
     // Credentials βάσης δεδομένων.
-    private static final String URL = "jdbc:mysql://localhost:3306/WeightTracking";
+    private static final String URL = "jdbc:mysql://localhost:3306/GymNet";
     private static final String USER = "root";
     private static final String PASSWORD = "1234ceid";
 
@@ -63,7 +63,12 @@ public class DBManager {
         try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query);
              ResultSet rs = pstmt.executeQuery()) {
-            
+
+            if (!rs.isBeforeFirst()) { // Έλεγχος για ύπαρξη περιεχομένου στην βάση.
+                System.out.println("\nΔεν βρέθηκαν καταχωρήσεις BMI στη βάση δεδομένων.");
+                return;
+            }
+
             System.out.println("\nΙστορικό μετρήσεων BMI:");
             System.out.println("------------------------");
             
