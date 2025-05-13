@@ -1,0 +1,21 @@
+create database GymNet; // Δημιουργία Βάσης GymNet.
+
+
+use GymNet; // Εντολή για χρήση Βάσης.
+
+
+CREATE TABLE bmi_results( // Πίνακας για το WeightTracking UseCase. 
+user_id INT NOT NULL AUTO_INCREMENT,
+bmi_value DOUBLE NOT NULL,
+measurement_date DATE NOT NULL,
+PRIMARY KEY(user_id)
+);
+
+
+CREATE TABLE gym_client( // Πίνακας για το ProgramSelection UseCase.
+firstname VARCHAR(5) NOT NULL,
+lastname VARCHAR(50) NOT NULL,
+address VARCHAR(100) NOT NULL,
+phone VARCHAR(10) NOT NULL,
+PRIMARY KEY(firstname)
+);
