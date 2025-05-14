@@ -60,3 +60,14 @@ CREATE TABLE IF NOT EXISTS comments (
     FOREIGN KEY (client_id) REFERENCES clients(id)
 );
 
+CREATE TABLE IF NOT EXISTS gymlist (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    gymname VARCHAR(50) NOT NULL,
+    city VARCHAR(50) NOT NULL,
+    type VARCHAR(50) NOT NULL,
+    monthlysubscription DECIMAL (10,2),
+    rating DECIMAL (10,1),
+    personaltrainer TINYINT(1)
+);
+
+
