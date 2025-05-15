@@ -22,7 +22,7 @@ public class SpecificProgramScreen {
     private static boolean userExists(String firstname, String lastname, String phone) {
         try {
             Connection connection = DBManager.getConnection();
-            String sql = "SELECT * FROM gymclient WHERE firstname = ? AND lastname = ? AND phone = ?";
+            String sql = "SELECT * FROM gym_client WHERE firstname = ? AND lastname = ? AND phone = ?";
             
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setString(1, firstname);
@@ -42,7 +42,7 @@ public class SpecificProgramScreen {
     private static boolean storeSubscription(String firstname, String lastname, String address, String phone) {
         try {
             Connection connection = DBManager.getConnection();
-            String sql = "INSERT INTO gymclient (firstname, lastname, phone, address) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO gym_client (firstname, lastname, phone, address) VALUES (?, ?, ?, ?)";
             
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setString(1, firstname);

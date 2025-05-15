@@ -6,7 +6,7 @@ import java.sql.SQLException;
 public class DBManager {
 
     // Credentials βάσης δεδομένων.
-    private static final String URL = "jdbc:mysql://localhost:3306/ProgramSelection";
+    private static final String URL = "jdbc:mysql://localhost:3306/GymNet";
     private static final String USER = "root";
     private static final String PASSWORD = "1234ceid";
 

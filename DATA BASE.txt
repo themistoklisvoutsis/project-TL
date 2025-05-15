@@ -1,0 +1,64 @@
+create database GymNet; // Δημιουργία Βάσης GymNet.
+
+
+use GymNet; // Εντολή για χρήση Βάσης.
+
+
+CREATE TABLE bmi_results(  // Πίνακας για το WeightTracking UseCase.
+id INT NOT NULL AUTO_INCREMENT,
+user_id INT NOT NULL AUTO_INCREMENT,
+bmi_value DOUBLE NOT NULL,
+measurement_date DATE NOT NULL,
+PRIMARY KEY(user_id)
+);
+
+ 
+CREATE TABLE IF NOT EXISTS clients (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    firstname VARCHAR(5) NOT NULL,
+    lastname VARCHAR(50) NOT NULL,
+    address VARCHAR(100) NOT NULL,
+    phone VARCHAR(10) NOT NULL,
+    qr_code VARCHAR(50) UNIQUE,
+    last_check_in DATE,
+    has_participated BOOLEAN DEFAULT TRUE
+);
+
+INSERT INTO clients (id, firstname, lastname , address , phone , qr_code, last_check_in, has_participated) VALUES
+('001', 'John', 'Doe','Edessis 25','6971233221', 'QR12345', '2000-01-01' , TRUE),
+('002', 'Jane', 'Smith','Poykevil 500','698456654', 'QR67890', '2000-01-01' , TRUE);
+
+Create Table gyms(
+name VARCHAR(50) NOT NULL,
+PRIMARY KEY(name)
+);
+
+INSERT INTO gyms (name) VALUES
+('Fitness Club'),
+('Wellness Center');
+
+CREATE TABLE IF NOT EXISTS check_ins (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    client_id VARCHAR(10) NOT NULL,
+    check_in_time DATETIME NOT NULL,
+    FOREIGN KEY (client_id) REFERENCES clients(id)
+);
+
+CREATE TABLE IF NOT EXISTS ratings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    gym_name VARCHAR(100) NOT NULL,
+    client_id VARCHAR(50) NOT NULL,
+    rating DOUBLE NOT NULL CHECK (rating BETWEEN 1 AND 5),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (client_id) REFERENCES clients(id)
+);
+
+CREATE TABLE IF NOT EXISTS comments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    gym_name VARCHAR(100) NOT NULL,
+    client_id VARCHAR(50) NOT NULL,
+    comment TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (client_id) REFERENCES clients(id)
+);
+
