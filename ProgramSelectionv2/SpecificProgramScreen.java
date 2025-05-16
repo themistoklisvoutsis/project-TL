@@ -6,8 +6,7 @@ import java.util.Scanner;
 
 public class SpecificProgramScreen {
     public static void showGymProgram(String[] programDetails){
-        if (programDetails == null) return;
-        
+
         String selectedProgram = programDetails[0];
         int duration = Integer.parseInt(programDetails[1]);
         
@@ -22,7 +21,7 @@ public class SpecificProgramScreen {
     private static boolean userExists(String firstname, String lastname, String phone) {
         try {
             Connection connection = DBManager.getConnection();
-            String sql = "SELECT * FROM gym_client WHERE firstname = ? AND lastname = ? AND phone = ?";
+            String sql = "SELECT * FROM clients WHERE firstname = ? AND lastname = ? AND phone = ?";
             
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setString(1, firstname);
@@ -38,11 +37,10 @@ public class SpecificProgramScreen {
         }
     }
 
-    // Μέθοδος εισαγωγής νέου χρήστη
     private static boolean storeSubscription(String firstname, String lastname, String address, String phone) {
         try {
             Connection connection = DBManager.getConnection();
-            String sql = "INSERT INTO gym_client (firstname, lastname, phone, address) VALUES (?, ?, ?, ?)";
+            String sql = "INSERT INTO clients (firstname, lastname, phone, address) VALUES (?, ?, ?, ?)";
             
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 stmt.setString(1, firstname);
@@ -59,36 +57,54 @@ public class SpecificProgramScreen {
         }
     }
 
-    public static void personalDataInsertion(Scanner scanner) {
+    public static boolean personalDataInsertion(Scanner scanner) {
         try {
             scanner.nextLine(); // Καθαρίζουμε το buffer
             System.out.println("\n=== Εισήγαγε τα στοιχεία σου ===");
             
             System.out.println("Όνομα :");
-            String firstname = scanner.nextLine();
+            String firstname = scanner.nextLine().trim();
+            if (firstname.isEmpty()) {
+               // System.out.println("\nΤο όνομα δεν μπορεί να είναι κενό!");
+                return false;
+            }
             
             System.out.println("Επίθετο :");
-            String lastname = scanner.nextLine();
+            String lastname = scanner.nextLine().trim();
+            if (lastname.isEmpty()) {
+               // System.out.println("\nΤο επίθετο δεν μπορεί να είναι κενό!");
+                return false;
+            }
             
             System.out.println("Διεύθυνση :");
-            String address = scanner.nextLine();
+            String address = scanner.nextLine().trim();
+            if (address.isEmpty()) {
+               // System.out.println("\nΗ διεύθυνση δεν μπορεί να είναι κενή!");
+                return false;
+            }
             
             System.out.println("Αριθμός Τηλεφώνου :");
-            String phone = scanner.nextLine();
+            String phone = scanner.nextLine().trim();
+            if (phone.isEmpty()) {
+               // System.out.println("\nΟ αριθμός τηλεφώνου δεν μπορεί να είναι κενός!");
+                return false;
+            }
 
             // Έλεγχος αν ο χρήστης υπάρχει ήδη
             if (userExists(firstname, lastname, phone)) {
                 System.out.println("\nΟ χρήστης υπάρχει ήδη στο σύστημα!");
-                return;
+                return false;
             }
 
             // Εισαγωγή νέου χρήστη
             if (storeSubscription(firstname, lastname, address, phone)) {
-                System.out.println("\nΗ εγγραφή των στοιχείων σας ολοκληρώθηκε με επιτυχία!");
+                return true;
             }
+            return false;
             
         } catch (Exception e) {
             System.out.println("Σφάλμα: " + e.getMessage());
+            return false;
         }
     }
 }

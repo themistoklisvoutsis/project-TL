@@ -37,4 +37,36 @@ public class DBManager {
             System.out.println("Σφάλμα κατά το κλείσιμο της σύνδεσης: " + e.getMessage());
         }
     }
+    public static boolean storeSubscription(String programType, int months) {
+        try {
+            Connection connection = getConnection();
+            // Έλεγχος εγκυρότητας προγράμματος
+            if (!programType.equals("Ζούμπα") && 
+                !programType.equals("Γιόγκα") && 
+                !programType.equals("Κροσφιτ") && 
+                !programType.equals("Βάρη")) {
+                System.out.println("Μη έγκυρο πρόγραμμα!");
+                return false;
+            }
+            
+            // Έλεγχος εγκυρότητας διάρκειας
+            if (months != 1 && months != 3 && months != 6 && months != 12) {
+                System.out.println("Μη έγκυρη διάρκεια συνδρομής!");
+                return false;
+            }
+            
+            String sql = "INSERT INTO subscriptions (program_type, duration_months) VALUES (?, ?)";
+            
+            try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+                stmt.setString(1, programType);
+                stmt.setInt(2, months);
+                
+                stmt.executeUpdate();
+                return true;
+            }
+        } catch (SQLException e) {
+            System.out.println("Σφάλμα κατά την αποθήκευση της συνδρομής: " + e.getMessage());
+            return false;
+        }
+    }
 }
