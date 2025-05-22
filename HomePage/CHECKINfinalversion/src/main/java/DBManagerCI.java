@@ -3,7 +3,7 @@ import java.sql.*;
 public class DBManagerCI {
     private Connection connection;
 
-    public void DBManager() {
+    public  DBManagerCI() {
         try {
             String url = "jdbc:mysql://localhost:3306/GymNet";
             String user = "root";

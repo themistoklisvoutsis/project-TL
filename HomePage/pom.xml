@@ -23,7 +23,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencyManagement>
+
         <dependencies>
             <!-- MySQL Connector/J shared dependency -->
             <dependency>
@@ -32,6 +32,6 @@
                 <version>8.3.0</version>
             </dependency>
         </dependencies>
-    </dependencyManagement>
+
 
 </project>

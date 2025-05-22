@@ -1,9 +1,9 @@
 
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
-/* Σύνδεση βάσης mySQLshell με τον κώδικα */
+
+// Σύνδεση βάσης  με τον κώδικα
 public class DBManagerSWF {
     private static final String URL = "jdbc:mysql://localhost:3306/GymNet";
     private static final String USER = "root";
