@@ -14,7 +14,7 @@ public class ManageWeightTracking {
                 double bmi = WeightCalc.performCalc(data[0], data[1]);
                 WeightResultScreen.showWeightResult(bmi);
                 // Αποθήκευση BMI στην βάση δεδομένων.
-                boolean success = DBManager.storeResult(userId, bmi);
+                boolean success = DBManagerWT.storeResult(userId, bmi);
                 if (success) {
                     System.out.println("Το BMI αποθηκεύτηκε επιτυχώς!");
                 } else {
@@ -23,7 +23,7 @@ public class ManageWeightTracking {
             }
         } else if (choice == 2) { // Προβολή Ιστορικού.
             WeightHistoryScreen.display(); // Προβολή οθόνης Ιστορικού.
-            DBManager.bodyMassHistorySearch(); // Εμφάνιση μετρήσεων bmi.
+            DBManagerWT.bodyMassHistorySearch(); // Εμφάνιση μετρήσεων bmi.
         }
     }
 }

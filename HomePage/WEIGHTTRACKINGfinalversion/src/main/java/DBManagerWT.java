@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.ResultSet;
 
-public class DBManager {
+public class DBManagerWT {
 
     // Credentials βάσης δεδομένων.
     private static final String URL = "jdbc:mysql://localhost:3306/GymNet";
