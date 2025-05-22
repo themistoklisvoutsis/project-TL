@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class ManageGymPrograms {
-    public static void main(String[] args) {
+    public static void GymProgramsManager() {
         Scanner scanner = new Scanner(System.in);
         String[] programDetails = selectGymPrograms(scanner);
         DBManager.storeSubscription(programDetails[0], Integer.parseInt(programDetails[1]));

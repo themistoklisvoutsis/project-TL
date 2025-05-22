@@ -1,7 +1,7 @@
 public class ManageWeightTracking {
     private static final int userId = 1; // Προσωρινή σταθερή τιμή για τον χρήστη.
 
-    public static void main(String[] args) {
+    public static void WeightTrackingManager() {
 
         // Επιλογή Υπολογισμού Δείκτη Μάζας Σώματος.
         WeightTrackingScreen.showWeightTrackingScreen();

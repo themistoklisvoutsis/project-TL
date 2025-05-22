@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
-public class GymClient {
-    public static void main(String[] args) {
+public class GymClient2 {
+    public static void CheckInManager() {
         DBManager dbManager = new DBManager();
         ManageCheckIn manageCheckIn = new ManageCheckIn(dbManager);
         Scanner scanner = new Scanner(System.in);

@@ -1,4 +1,4 @@
-import org.example.Client;
+
 import java.util.Scanner;
 
 public class GymNetHomePage {
@@ -42,19 +42,19 @@ public class GymNetHomePage {
 
         switch (choice) {
             case 1:
-                Gym.searchWithFilters(); // Κλήση Search With filters Feature.
+                Gym.searchWithFilterManager(); // Κλήση Search With filters Feature.
                 break;
             case 2:
                 ManageWeightTracking.WeightTrackingManager(); // Κλήση Weight Tracking Feature.
                 break;
             case 3:
-                GymClient.CheckInManager(); // Κλήση CheckIn Feature.
+                GymClient2.CheckInManager(); // Κλήση CheckIn Feature.
                 break;
             case 4:
-                ManageGymPrograms1.GymProgramsManager(); // Κλήση Program Selection Feature.
+                ManageGymPrograms.GymProgramsManager(); // Κλήση Program Selection Feature.
                 break;
             case 5:
-                GymClient2.GymRatingsManager(); // Κλήση Rating Feature.
+                GymClient.GymRatingsManager(); // Κλήση Rating Feature.
             default:
                 System.out.println("Ευχαριστούμε που χρησιμοποιήσατε το GymNet!");
                 break;

@@ -1,4 +1,4 @@
-package org.example;
+
 /* Δήλωση φίλτρων */
 public record GymProfile(
         int id,

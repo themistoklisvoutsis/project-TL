@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class GymClient {
-    public static void main(String[] args) {
+    public static void GymRatingsManager() {
         SearchResultsScreen searchResultsScreen = new SearchResultsScreen();
         Scanner scanner = new Scanner(System.in);
 
