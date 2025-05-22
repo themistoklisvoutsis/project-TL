@@ -4,8 +4,7 @@ import java.util.Scanner;
 public class GymNetHomePage {
 
     static Scanner scanner = new Scanner(System.in);
-    private static Client Gym = new Client();
-
+    
     public static void main (String[]args){
         StartingMenu();
         int atrbt = scanner.nextInt(); // Διάβασμα επιλογής attribute.
@@ -42,7 +41,7 @@ public class GymNetHomePage {
 
         switch (choice) {
             case 1:
-                Gym.searchWithFilterManager(); // Κλήση Search With filters Feature.
+                Client.searchWithFilterManager(); // Κλήση Search With filters Feature.
                 break;
             case 2:
                 ManageWeightTracking.WeightTrackingManager(); // Κλήση Weight Tracking Feature.

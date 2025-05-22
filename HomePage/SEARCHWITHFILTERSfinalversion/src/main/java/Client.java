@@ -1,13 +1,11 @@
 
-
-
 import java.util.List;
 
 public class Client {
     public static void searchWithFilterManager() {
         GymSearchScreen searchScreen = new GymSearchScreen();
         ManageFilters filters = new ManageFilters();
-        DBManager dbManager = new DBManager();
+        DBManagerSWF dbManager = new DBManagerSWF();
 
         while (true) {
             searchScreen.showGymSearchScreen();

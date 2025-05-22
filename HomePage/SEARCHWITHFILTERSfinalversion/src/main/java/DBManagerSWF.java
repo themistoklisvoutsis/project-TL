@@ -4,10 +4,10 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 /* Σύνδεση βάσης mySQLshell με τον κώδικα */
-public class DBManager {
-    private static final String URL = "jdbc:mysql://localhost:3306/gym?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+public class DBManagerSWF {
+    private static final String URL = "jdbc:mysql://localhost:3306/GymNet";
     private static final String USER = "root";
-    private static final String PASSWORD = "ceid123";
+    private static final String PASSWORD = "1234ceid";
 
     public List<GymProfile> filterSearchGymProfile(ManageFilters filters) {
         List<GymProfile> results = new ArrayList<>();

@@ -20,7 +20,7 @@ public class SpecificProgramScreen {
     // Μέθοδος ελέγχου ύπαρξης χρήστη
     private static boolean userExists(String firstname, String lastname, String phone) {
         try {
-            Connection connection = DBManager.getConnection();
+            Connection connection = DBManagerPS.getConnection();
             String sql = "SELECT * FROM clients WHERE firstname = ? AND lastname = ? AND phone = ?";
 
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
@@ -39,7 +39,7 @@ public class SpecificProgramScreen {
 
     private static boolean storeSubscription(String firstname, String lastname, String address, String phone) {
         try {
-            Connection connection = DBManager.getConnection();
+            Connection connection = DBManagerPS.getConnection();
             String sql = "INSERT INTO clients (firstname, lastname, phone, address) VALUES (?, ?, ?, ?)";
 
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {

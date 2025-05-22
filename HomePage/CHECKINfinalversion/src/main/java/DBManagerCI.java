@@ -1,9 +1,9 @@
 import java.sql.*;
 
-public class DBManager {
+public class DBManagerCI {
     private Connection connection;
 
-    public DBManager() {
+    public void DBManager() {
         try {
             String url = "jdbc:mysql://localhost:3306/GymNet";
             String user = "root";

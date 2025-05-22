@@ -1,7 +1,7 @@
 public class ManageCheckIn {
-    private DBManager dbManager;
+    private DBManagerCI dbManager;
 
-    public ManageCheckIn(DBManager dbManager) {
+    public ManageCheckIn(DBManagerCI dbManager) {
         this.dbManager = dbManager;
     }
 

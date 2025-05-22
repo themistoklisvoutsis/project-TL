@@ -4,7 +4,7 @@ public class ManageGymPrograms {
     public static void GymProgramsManager() {
         Scanner scanner = new Scanner(System.in);
         String[] programDetails = selectGymPrograms(scanner);
-        DBManager.storeSubscription(programDetails[0], Integer.parseInt(programDetails[1]));
+        DBManagerPS.storeSubscription(programDetails[0], Integer.parseInt(programDetails[1]));
 
 
         SpecificProgramScreen.showGymProgram(programDetails);
