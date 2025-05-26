@@ -1,0 +1,133 @@
+
+CREATE TABLE `bmi_results` (
+  `Client_Id` bigint NOT NULL,
+  `Bmi_value` double NOT NULL,
+  `Measurement_Date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Δομή πίνακα για τον πίνακα `gymclient`
+--
+
+CREATE TABLE `gymclient` (
+  `GymClient_Id` bigint NOT NULL,
+  `FirstName` varchar(50) NOT NULL,
+  `LastName` varchar(50) NOT NULL,
+  `Username` varchar(50) NOT NULL,
+  `Password` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Δομή πίνακα για τον πίνακα `gymlist`
+--
+
+CREATE TABLE `gymlist` (
+  `Gym_Id` bigint NOT NULL,
+  `GymName` varchar(100) NOT NULL,
+  `City` varchar(100) NOT NULL,
+  `Type` varchar(100) NOT NULL,
+  `MonthlySubscription` decimal(4,2) NOT NULL,
+  `Rating` decimal(2,1) NOT NULL,
+  `PersonalTrainer` tinyint(1) NOT NULL,
+  `Owener_Id` bigint NOT NULL,
+  `Fdata` decimal(8,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Δομή πίνακα για τον πίνακα `gymowner`
+--
+
+CREATE TABLE `gymowner` (
+  `GymOwner_Id` bigint NOT NULL,
+  `FirstName` varchar(50) NOT NULL,
+  `LastName` varchar(50) NOT NULL,
+  `Username` varchar(50) NOT NULL,
+  `Password` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Ευρετήρια για άχρηστους πίνακες
+--
+
+--
+-- Ευρετήρια για πίνακα `bmi_results`
+--
+ALTER TABLE `bmi_results`
+  ADD PRIMARY KEY (`Client_Id`);
+
+--
+-- Ευρετήρια για πίνακα `gymclient`
+--
+ALTER TABLE `gymclient`
+  ADD PRIMARY KEY (`GymClient_Id`);
+
+--
+-- Ευρετήρια για πίνακα `gymlist`
+--
+ALTER TABLE `gymlist`
+  ADD PRIMARY KEY (`Gym_Id`),
+  ADD KEY `Owener_Id` (`Owener_Id`);
+
+--
+-- Ευρετήρια για πίνακα `gymowner`
+--
+ALTER TABLE `gymowner`
+  ADD PRIMARY KEY (`GymOwner_Id`);
+
+--
+-- AUTO_INCREMENT για άχρηστους πίνακες
+--
+
+--
+-- AUTO_INCREMENT για πίνακα `gymclient`
+--
+ALTER TABLE `gymclient`
+  MODIFY `GymClient_Id` bigint NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT για πίνακα `gymlist`
+--
+ALTER TABLE `gymlist`
+  MODIFY `Gym_Id` bigint NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT για πίνακα `gymowner`
+--
+ALTER TABLE `gymowner`
+  MODIFY `GymOwner_Id` bigint NOT NULL AUTO_INCREMENT;
+
+--
+-- Περιορισμοί για άχρηστους πίνακες
+--
+
+--
+-- Περιορισμοί για πίνακα `bmi_results`
+--
+ALTER TABLE `bmi_results`
+  ADD CONSTRAINT `bmi_results_ibfk_1` FOREIGN KEY (`Client_Id`) REFERENCES `gymclient` (`GymClient_Id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+--
+-- Περιορισμοί για πίνακα `gymlist`
+--
+ALTER TABLE `gymlist`
+  ADD CONSTRAINT `gymlist_ibfk_1` FOREIGN KEY (`Owener_Id`) REFERENCES `gymowner` (`GymOwner_Id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+COMMIT;
+
+
+
+CREATE TABLE financial_history (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    Gym_Id BIGINT NOT NULL,
+    Fdata DECIMAL(8,2) NOT NULL,
+    check_date DATE NOT NULL,
+    FOREIGN KEY (Gym_Id) REFERENCES gymlist(Gym_Id)
+        ON DELETE CASCADE
+        ON UPDATE CASCADE
+);
+ALTER TABLE gymlist DROP COLUMN Fdata;
