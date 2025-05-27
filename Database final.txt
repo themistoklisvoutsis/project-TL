@@ -155,3 +155,30 @@ CREATE TABLE check_ins (
        client_id BIGINT NOT NULL,
        check_in_time DATETIME NOT NULL,
        FOREIGN KEY (client_id) REFERENCES gymclient(GymClient_Id) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+ CREATE TABLE trainerschedule (
+         id INT AUTO_INCREMENT PRIMARY KEY,
+         TrainerName VARCHAR(100) NOT NULL,
+         DayOfWeek ENUM('Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο', 'Κυριακή') NOT NULL,
+         StartTime TIME NOT NULL,
+         EndTime TIME NOT NULL,
+         ProgramType VARCHAR(50),
+         IsAvailable BOOLEAN DEFAULT true
+     );
+ INSERT INTO trainerschedule (TrainerName, DayOfWeek, StartTime, EndTime, ProgramType) VALUES
+     ('Θέμης Παπόγλου', 'Δευτέρα', '09:00', '17:00', 'Προσωπικές προπονήσεις'),
+     ('Θέμης Παπόγλου', 'Τρίτη', '10:00', '18:00', 'Μαθήματα CrossFit'),
+     ('Θέμης Παπόγλου', 'Πέμπτη', '09:00', '17:00', 'Προσωπικές προπονήσεις'),
+     ('Θέμης Παπόγλου', 'Παρασκευή', '11:00', '19:00', 'Μαθήματα δύναμης');
+
+ INSERT INTO trainerschedule (TrainerName, DayOfWeek, StartTime, EndTime, ProgramType) VALUES
+     ('Κυριάκος Βούτης', 'Δευτέρα', '08:00', '16:00', 'Μαθήματα Yoga'),
+     ('Κυριάκος Βούτης', 'Τετάρτη', '09:00', '17:00', 'Προσωπικές προπονήσεις'),
+     ('Κυριάκος Βούτης', 'Πέμπτη', '10:00', '18:00', 'Μαθήματα Pilates'),
+     ('Κυριάκος Βούτης', 'Σάββατο', '10:00', '14:00', 'Ειδικά προγράμματα');
+
+ INSERT INTO trainerschedule (TrainerName, DayOfWeek, StartTime, EndTime, ProgramType) VALUES
+     ('Κωνσταντής Βασιλείου', 'Τρίτη', '08:00', '12:00', 'Προσωπικές προπονήσεις'),
+     ('Κωνσταντής Βασιλείου', 'Τετάρτη', '10:00', '18:00', 'Μαθήματα TRX'),
+     ('Κωνσταντής Βασιλείου', 'Παρασκευή', '09:00', '17:00', 'Λειτουργική προπόνηση'),
+     ('Κωνσταντής Βασιλείου', 'Κυριακή', '10:00', '14:00', 'Ειδικά προγράμματα');
