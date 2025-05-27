@@ -150,9 +150,8 @@ CREATE TABLE IF NOT EXISTS comments (
     FOREIGN KEY (client_id) REFERENCES clients(id)
 );
 
-CREATE TABLE IF NOT EXISTS check_ins (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    client_id VARCHAR(10) NOT NULL,
-    check_in_time DATETIME NOT NULL,
-    FOREIGN KEY (client_id) REFERENCES clients(id)
-);
+CREATE TABLE check_ins (
+       id INT AUTO_INCREMENT PRIMARY KEY,
+       client_id BIGINT NOT NULL,
+       check_in_time DATETIME NOT NULL,
+       FOREIGN KEY (client_id) REFERENCES gymclient(GymClient_Id) ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
