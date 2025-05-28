@@ -5,8 +5,7 @@ public class GymProfileScreen {
         this.manageCheckIn = manageCheckIn;
     }
 
-    public void choosesCheckIn(String qrCode) {
-        manageCheckIn.qrGenerate(qrCode);
+    public void choosesCheckIn(long gymClientId) {
+        manageCheckIn.processCheckIn(gymClientId); // Updated to use processCheckIn
     }
 }
-

@@ -5,18 +5,18 @@ public class ManageCheckIn {
         this.dbManager = dbManager;
     }
 
-    public void qrGenerate(String qrCode) {
-        if (!dbManager.isClientRegistered(qrCode)) {
-            System.out.println("Check-In Failed: Invalid QR Code.");
+    public void processCheckIn(long gymClientId) {
+        if (!dbManager.isClientRegistered(gymClientId)) {
+            System.out.println("Check-In Failed: Invalid GymClient ID.");
             return;
         }
 
-        if (dbManager.hasCheckedInToday(qrCode)) {
+        if (dbManager.hasCheckedInToday(gymClientId)) {
             System.out.println("Check-In Failed: Already checked in today.");
             return;
         }
 
-        dbManager.updateCheckIn(qrCode);
+        dbManager.updateCheckIn(gymClientId);
         System.out.println("Check-In Successful!");
     }
 }
