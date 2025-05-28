@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="PersonalTrainerFinalVersion" />
+        <module name="CHECKINfinalversion" />
+        <module name="GYMRATINGfinalversion" />
+        <module name="PersonalTraining" />
+        <module name="Schedule" />
+        <module name="WEIGHTTRACKINGfinalversion" />
+        <module name="Weight_Tracking" />
+        <module name="SubscriptionDashBoard" />
+        <module name="PROGRAMSELECTIONfinalversion" />
+        <module name="gymnet-db" />
+        <module name="SEARCHWITHFILTERSfinalversion" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
