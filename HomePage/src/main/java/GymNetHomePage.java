@@ -14,7 +14,7 @@ public class GymNetHomePage {
         if (atrbt == 1) {
             GymOwner();
         } else if (atrbt == 2) {
-            GymClients();
+            GymClient();
         }
     }
 
@@ -45,7 +45,7 @@ public class GymNetHomePage {
                 break;
         }
     }
-    public static void GymClients(){
+    public static void GymClient(){
         System.out.println("You are a Gym Client!");// Λειτουργία ως Gym Client.
 
         System.out.println("Please select your option:  ");

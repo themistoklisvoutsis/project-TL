@@ -20,7 +20,7 @@ public class DBManagerFD {
             if (connection == null || connection.isClosed()) {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 connection = DriverManager.getConnection(URL, USER, PASSWORD);
-                System.out.println("✅ Επιτυχής σύνδεση με τη βάση GymNet!");
+            //    System.out.println("✅ Επιτυχής σύνδεση με τη βάση GymNet!");
             }
             return connection;
         } catch (ClassNotFoundException e) {

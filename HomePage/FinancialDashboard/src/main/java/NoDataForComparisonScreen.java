@@ -19,14 +19,14 @@ public class NoDataForComparisonScreen {
                 int count = rs.getInt("total");
 
                 if (count == 0) {
-                    System.out.println("⚠️ Δεν υπάρχει ιστορικό οικονομικών στον πίνακα financial_history.");
+                    System.out.println("⚠️ Δεν υπάρχει ιστορικό οικονομικών.");
                 } else {
                     //System.out.println("✅ Υπάρχουν " + count + " εγγραφές στο οικονομικό ιστορικό.");
                 }
             }
 
         } catch (SQLException e) {
-            System.out.println("❌ Σφάλμα κατά τον έλεγχο του πίνακα financial_history: " + e.getMessage());
+            System.out.println("❌ Σφάλμα κατά τον έλεγχο." + e.getMessage());
         }
     }
 }

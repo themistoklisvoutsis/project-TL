@@ -5,7 +5,7 @@ public class GymClientInitialScreenPP {
         System.out.println("Welcome to the Gym Management System!");
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter your Client ID: ");
+        System.out.println("Please enter your ID number: ");
         int clientId = scanner.nextInt();
         scanner.nextLine();
 
