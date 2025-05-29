@@ -3,22 +3,21 @@ public class PersonalTrainersScreen {
     static Scanner input = new Scanner(System.in);
     public static void choosesPersonalTraining() {
 
-        showPersonalTrainers(); // εμφάνιση γυμναστών.
-        String selected = selectsPersonalTrainer(); // Επιλογή γυμναστή.
-        ManagePersonalTrainingPrograms.searchPersonalTrainerSchedule(selected); // Εμφάνιση προγραμμάτων.
-        PersonalProgramFilterScreen.adjustFilters(); // Εμφάνιση φίλτρων.
-        PersonalInfoScreen.showPersonalInfoScreen(); // Συμπλήρωση στοιχείων.
+        showPersonalTrainers(); // show trainers
+        String selected = selectsPersonalTrainer(); // select trainer
+        ManagePersonalTrainingPrograms.searchPersonalTrainerSchedule(selected); // show programs
+        PersonalProgramFilterScreen.adjustFilters(); // show filters
+        PersonalInfoScreen.showPersonalInfoScreen(); // fill personal info
         PersonalTrainingConfirmationScreen.showconfScreen(); //DBManagerPT.storeSubscription();
-
 
     }
     public static void showPersonalTrainers() {
 
-        System.out.println("\nΠροσωπικοί Γυμναστές:");
+        System.out.println("\nPersonal Trainers:");
         System.out.println("----------------------------------------");
-        System.out.println("1. Θέμης Παπόγλου");
-        System.out.println("2. Κυριάκος Βούτης");
-        System.out.println("3. Κωνσταντής Βασιλείου");
+        System.out.println("1. Themis Papoglou");
+        System.out.println("2. Kyriakos Voutis");
+        System.out.println("3. Konstantis Vasileiou");
 
     }
     public static String selectsPersonalTrainer() {
@@ -26,33 +25,33 @@ public class PersonalTrainersScreen {
         boolean validChoice = false;
 
         while (!validChoice) {
-            System.out.println("\nΠαρακαλώ επιλέξτε έναν γυμναστή (1-3): ");
+            System.out.println("\nPlease select a trainer (1-3): ");
             try {
                 int trainerChoice = input.nextInt();
 
                 switch (trainerChoice) {
                     case 1:
-                        trainer = "Θέμης Παπόγλου";
+                        trainer = "Themis Papoglou";
                         validChoice = true;
                         break;
                     case 2:
-                        trainer = "Κυριάκος Βούτης";
+                        trainer = "Kyriakos Voutis";
                         validChoice = true;
                         break;
                     case 3:
-                        trainer = "Κωνσταντής Βασιλείου";
+                        trainer = "Konstantis Vasileiou";
                         validChoice = true;
                         break;
                     default:
-                        System.out.println("Μη έγκυρη επιλογή. Παρακαλώ επιλέξτε έναν αριθμό από το 1 έως το 3.");
+                        System.out.println("Invalid choice. Please select a number between 1 and 3.");
                 }
             } catch (Exception e) {
-                System.out.println("Παρακαλώ εισάγετε έναν έγκυρο αριθμό.");
-                input.nextLine(); // Καθαρισμός του buffer
+                System.out.println("Please enter a valid number.");
+                input.nextLine(); // Clear buffer
             }
         }
 
-        System.out.println("\nΕπιλέξατε τον γυμναστή: " + trainer);
+        System.out.println("\nYou selected trainer: " + trainer);
         return trainer;
     }
 }

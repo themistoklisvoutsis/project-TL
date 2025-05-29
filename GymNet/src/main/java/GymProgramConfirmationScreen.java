@@ -1,6 +1,6 @@
 public class GymProgramConfirmationScreen {
     public static void display() {
-        System.out.println("\nΗ εγγραφή των στοιχείων σας ολοκληρώθηκε με επιτυχία!");
+        System.out.println("\nYour data storage has been completed successfully !");
 
     }
 }

@@ -8,9 +8,9 @@ public class WeightCalcScreen {
     public static double[] dataInsertion() {
         // Εισαγωγή Στοιχείων.
         Scanner input = new Scanner(System.in);
-        System.out.println("Πληκτρολόγησε το βάρος σου");
+        System.out.println("Insert your weight (kg) :");
         double weight = input.nextDouble();
-        System.out.println("Πληκτρολόγησε το ύψος σου");
+        System.out.println("Insert your height (cm) :");
         double height = input.nextDouble();
         // Έλεγχος δεδομένων.
         if (checkBodyData(weight, height)) {

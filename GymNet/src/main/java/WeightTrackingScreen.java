@@ -11,7 +11,7 @@ public class WeightTrackingScreen{
 
     // Επιλογές χρήστη.
     public static void showWeightTrackingScreen(){
-        System.out.println("1.Υπολογισμός Δείκτη Μάζας Σώματος.");
-        System.out.println("2.Προβολή Ιστορικού.");
+        System.out.println("1.BMI calculation.");
+        System.out.println("2.History preview.");
     }
 }

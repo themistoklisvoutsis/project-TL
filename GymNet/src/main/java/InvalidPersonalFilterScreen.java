@@ -1,6 +1,6 @@
 public class InvalidPersonalFilterScreen {
     public static void display2(){
-        System.out.println("Σφάλμα: Τα επιλεγμένα φίλτρα δεν είναι έγκυρα. Παρακαλώ επιλέξτε από τις διαθέσιμες επιλογές.");
+        System.out.println("Error: The selected filters are invalid. Please select one of the given choices.");
 
     }
 }

@@ -16,9 +16,9 @@ public class ManageWeightTracking {
                 // Αποθήκευση BMI στην βάση δεδομένων.
                 boolean success = DBManager.storeResult(userId, bmi);
                 if (success) {
-                    System.out.println("Το BMI αποθηκεύτηκε επιτυχώς!");
+                    System.out.println("BMI has successfully been stored!");
                 } else {
-                    System.out.println("Υπήρξε πρόβλημα κατά την αποθήκευση του BMI.");
+                    System.out.println("There has been an issue with BMI storage.");
                 }
             }
         } else if (choice == 2) { // Προβολή Ιστορικού.

@@ -4,12 +4,10 @@ import java.util.List;
 
 public class DBManager {
     // Database credentials
-    private static final String URL = "jdbc:mysql://localhost:3306/GymNet"
-            + "?useSSL=false"
-            + "&allowPublicKeyRetrieval=true"
-            + "&serverTimezone=Europe/Athens";
+    private static final String URL = "jdbc:mysql://localhost:3306/GymNet?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Europe/Athens";
+
     private static final String USER = "root";
-    private static final String PASSWORD = "husiastepr";
+    private static final String PASSWORD = "1234ceid";
 
     // Connection instance
     private static Connection connection = null;
@@ -17,17 +15,15 @@ public class DBManager {
     /**
      * Legacy check-in manager (CI)
      */
-    public void DBManager() {
+    public DBManager() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(URL, USER, PASSWORD);
-            System.out.println("Database connected successfully.");
+            System.out.println("MySQL JDBC Driver Registered!");
         } catch (ClassNotFoundException e) {
             System.err.println("MySQL Driver not found: " + e.getMessage());
-        } catch (SQLException e) {
-            System.err.println("Failed to connect to the database: " + e.getMessage());
         }
     }
+
 
     public static boolean isClientRegistered(String qrCode) {
         String query = "SELECT id FROM clients WHERE qr_code = ?";

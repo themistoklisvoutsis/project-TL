@@ -8,14 +8,14 @@ public class PersonalInfoScreen {
 
     public static boolean checkPersonalInfoFillIn() {
         try {
-            System.out.print("Εισάγετε το ονοματεπώνυμό σας: ");
+            System.out.print("Insert your full name (Firstname Lastname) : ");
             fullName = scanner.nextLine();
             if (fullName.trim().isEmpty()) {
                 NotEnoughDataScreen.display1();
                 return false;
             }
 
-            System.out.print("Εισάγετε την ηλικία σας: ");
+            System.out.print("Insert your age: ");
             String ageInput = scanner.nextLine();
             if (ageInput.trim().isEmpty()) {
                 NotEnoughDataScreen.display1();
@@ -23,14 +23,14 @@ public class PersonalInfoScreen {
             }
             age = Integer.parseInt(ageInput);
 
-            System.out.print("Εισάγετε το φύλο σας (A/Θ): ");
+            System.out.print("Insert your sex (Male/Female): ");
             gender = scanner.nextLine().toUpperCase();
             if (!gender.equals("Α") && !gender.equals("Θ")) {
                 NotEnoughDataScreen.display1();
                 return false;
             }
 
-            System.out.print("Εισάγετε το ύψος σας (σε εκατοστά): ");
+            System.out.print("Insert your height (in cm): ");
             String heightInput = scanner.nextLine();
             if (heightInput.trim().isEmpty()) {
                 NotEnoughDataScreen.display1();
@@ -38,7 +38,7 @@ public class PersonalInfoScreen {
             }
             height = Integer.parseInt(heightInput);
 
-            System.out.print("Εισάγετε το βάρος σας (σε κιλά): ");
+            System.out.print("Insert your weight (in kilos): ");
             String weightInput = scanner.nextLine();
             if (weightInput.trim().isEmpty()) {
                 NotEnoughDataScreen.display1();
@@ -46,7 +46,7 @@ public class PersonalInfoScreen {
             }
             weight = Integer.parseInt(weightInput);
 
-            System.out.print("Έχετε κάποιο ιστορικό τραυματισμών; (Ν/Ο): ");
+            System.out.print("Have you got a history of serious injuries or rare diseases; (Ν/Ο): ");
             String injuryInput = scanner.nextLine().toUpperCase();
             if (!injuryInput.equals("Ν") && !injuryInput.equals("Ο")) {
                 NotEnoughDataScreen.display1();
@@ -55,7 +55,7 @@ public class PersonalInfoScreen {
             hasInjuries = injuryInput.equals("Ν");
 
             if (hasInjuries) {
-                System.out.print("Παρακαλώ περιγράψτε τους τραυματισμούς σας: ");
+                System.out.print("Please describe your injuries (10 words maximum): ");
                 injuries = scanner.nextLine();
                 if (injuries.trim().isEmpty()) {
                     NotEnoughDataScreen.display1();
@@ -75,27 +75,27 @@ public class PersonalInfoScreen {
         boolean isValid = true;
 
         if (fullName.length() < 5 || !fullName.contains(" ")) {
-            System.out.println("Το ονοματεπώνυμο πρέπει να περιέχει όνομα και επώνυμο (τουλάχιστον 5 χαρακτήρες).");
+            System.out.println("Your full name should consist of your first and last name  (at least 5 characters).");
             isValid = false;
         }
 
         if (age < 16 || age > 100) {
-            System.out.println("Η ηλικία πρέπει να είναι μεταξύ 16 και 100 ετών.");
+            System.out.println("Age must be between 16 and 100 years old.");
             isValid = false;
         }
 
         if (height < 140 || height > 220) {
-            System.out.println("Το ύψος πρέπει να είναι μεταξύ 140 και 220 εκατοστών.");
+            System.out.println("Height must be between 140 cm and 220 cm.");
             isValid = false;
         }
 
         if (weight < 40 || weight > 200) {
-            System.out.println("Το βάρος πρέπει να είναι μεταξύ 40 και 200 κιλών.");
+            System.out.println("Weight must be between 40 and 200 kilos.");
             isValid = false;
         }
 
         if (hasInjuries && (injuries == null || injuries.length() < 10)) {
-            System.out.println("Παρακαλώ δώστε μια πιο λεπτομερή περιγραφή των τραυματισμών σας (τουλάχιστον 10 χαρακτήρες).");
+            System.out.println("Please give a more analytical description of your disease/injury history (at least 10 characters).");
             isValid = false;
         }
 
@@ -103,13 +103,13 @@ public class PersonalInfoScreen {
     }
 
     public static void showPersonalInfoScreen() {
-        System.out.println("\nΣυμπλήρωση Προσωπικών Στοιχείων");
+        System.out.println("\nPersonal Data Insertion");
         System.out.println("----------------------------------------");
 
         scanner.nextLine(); // Καθαρισμός buffer
 
         if (!checkPersonalInfoFillIn()) {
-            System.out.println("Η συμπλήρωση των στοιχείων ακυρώθηκε.");
+            System.out.println("Data insertion has been cancelled.");
             return;
         }
 

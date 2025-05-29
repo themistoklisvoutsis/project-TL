@@ -10,49 +10,49 @@ public class GymProgramsScreen {
         String selectedProgram = "";
         int duration = 0;
 
-        // Επιλογή προγράμματος.
+        // Program selection.
         while (selectedProgram.isEmpty()) {
-            System.out.println("\n=== ΠΡΟΓΡΑΜΜΑΤΑ ΓΥΜΝΑΣΤΗΡΙΟΥ ===");
-            System.out.println("\nΕπιλέξτε πρόγραμμα:");
-            System.out.println("1. Ζούμπα");
-            System.out.println("2. Γιόγκα");
-            System.out.println("3. Κροσφιτ");
-            System.out.println("4. Βάρη");
-            System.out.println("0. Έξοδος");
+            System.out.println("\n=== GYM PROGRAMS ===");
+            System.out.println("\nSelect a program:");
+            System.out.println("1. Zumba");
+            System.out.println("2. Yoga");
+            System.out.println("3. CrossFit");
+            System.out.println("4. Weights");
+            System.out.println("0. Exit");
 
-            System.out.print("\nΕισάγετε την επιλογή σας: ");
+            System.out.print("\nEnter your choice: ");
             int choice = scanner.nextInt();
 
             switch (choice) {
                 case 0:
-                    System.out.println("Ευχαριστούμε! Αντίο!");
+                    System.out.println("Thank you! Goodbye!");
                     return null;
                 case 1:
-                    selectedProgram = "Ζούμπα";
+                    selectedProgram = "Zumba";
                     break;
                 case 2:
-                    selectedProgram = "Γιόγκα";
+                    selectedProgram = "Yoga";
                     break;
                 case 3:
-                    selectedProgram = "Κροσφιτ";
+                    selectedProgram = "CrossFit";
                     break;
                 case 4:
-                    selectedProgram = "Βάρη";
+                    selectedProgram = "Weights";
                     break;
                 default:
-                    System.out.println("Μη έγκυρη επιλογή! Παρακαλώ προσπαθήστε ξανά.");
+                    System.out.println("Invalid choice! Please try again.");
             }
         }
 
-        // Επιλογή διάρκειας.
+        // Duration selection.
         while (duration == 0) {
-            System.out.println("\nΕπιλέξτε διάρκεια συνδρομής για το πρόγραμμα " + selectedProgram + ":");
-            System.out.println("1. 1 χρόνος");
-            System.out.println("2. 1 μήνας");
-            System.out.println("3. 3 μήνες");
-            System.out.println("4. 6 μήνες");
+            System.out.println("\nSelect subscription duration for the program " + selectedProgram + ":");
+            System.out.println("1. 1 year");
+            System.out.println("2. 1 month");
+            System.out.println("3. 3 months");
+            System.out.println("4. 6 months");
 
-            System.out.print("\nΕισάγετε την επιλογή σας: ");
+            System.out.print("\nEnter your choice: ");
             int choice = scanner.nextInt();
 
             switch (choice) {
@@ -69,10 +69,10 @@ public class GymProgramsScreen {
                     duration = 6;
                     break;
                 default:
-                    System.out.println("Μη έγκυρη επιλογή! Παρακαλώ προσπαθήστε ξανά.");
+                    System.out.println("Invalid choice! Please try again.");
             }
         }
 
-        return new String[]{selectedProgram, String.valueOf(duration)}; // Επιστροφή τιμών για εμφάνιση.
+        return new String[]{selectedProgram, String.valueOf(duration)}; // Return values for display.
     }
 }
