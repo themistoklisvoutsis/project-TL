@@ -51,7 +51,7 @@ public class DBManager {
                 return isSameDay(new java.util.Date(), lastCheckIn);
             }
         } catch (SQLException e) {
-            System.err.println("Error checking last check-in: " + e.getMessage());
+            System.err.println("Error checking last check-i: " + e.getMessage());
         }
         return false;
     }
