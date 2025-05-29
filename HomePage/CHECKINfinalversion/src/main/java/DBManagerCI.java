@@ -3,11 +3,11 @@ import java.sql.*;
 public class DBManagerCI {
     private Connection connection;
 
-    public void DBManager() {
+    public DBManagerCI() {
         try {
-            String url = "jdbc:mysql://localhost:3306/GymNet";
+            String url = "jdbc:mysql://localhost:3306/gymdb";
             String user = "root";
-            String password = "1234ceid";
+            String password = "giorgos2004";
 
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(url, user, password);
@@ -19,10 +19,10 @@ public class DBManagerCI {
         }
     }
 
-    public boolean isClientRegistered(String qrCode) {
-        String query = "SELECT id FROM clients WHERE qr_code = ?";
+    public boolean isClientRegistered(long gymClientId) {
+        String query = "SELECT GymClient_Id FROM gymclient WHERE GymClient_Id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, qrCode);
+            stmt.setLong(1, gymClientId);
             ResultSet rs = stmt.executeQuery();
             return rs.next();
         } catch (SQLException e) {
@@ -31,10 +31,10 @@ public class DBManagerCI {
         return false;
     }
 
-    public boolean hasCheckedInToday(String qrCode) {
-        String query = "SELECT last_check_in FROM clients WHERE qr_code = ?";
+    public boolean hasCheckedInToday(long gymClientId) {
+        String query = "SELECT last_check_in FROM clients WHERE GymClient_Id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
-            stmt.setString(1, qrCode);
+            stmt.setLong(1, gymClientId);
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 Timestamp lastCheckIn = rs.getTimestamp("last_check_in");
@@ -46,11 +46,11 @@ public class DBManagerCI {
         return false;
     }
 
-    public void updateCheckIn(String qrCode) {
-        String query = "UPDATE clients SET last_check_in = ? WHERE qr_code = ?";
+    public void updateCheckIn(long gymClientId) {
+        String query = "UPDATE clients SET last_check_in = ? WHERE GymClient_Id = ?";
         try (PreparedStatement stmt = connection.prepareStatement(query)) {
             stmt.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
-            stmt.setString(2, qrCode);
+            stmt.setLong(2, gymClientId);
             stmt.executeUpdate();
             System.out.println("Check-in updated successfully.");
         } catch (SQLException e) {
@@ -68,5 +68,6 @@ public class DBManagerCI {
                 && cal1.get(java.util.Calendar.DAY_OF_YEAR) == cal2.get(java.util.Calendar.DAY_OF_YEAR);
     }
 }
+
 
 
